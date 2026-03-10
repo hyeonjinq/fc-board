@@ -10,7 +10,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     environment: production
-    
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -20,23 +20,23 @@ jobs:
       with:
         java-version: '17'
         distribution: 'zulu'
-				
+
     - name: Build with Gradle
       run: ./gradlew clean build
-			
+
     - name: Get current time
       uses: 1466587594/get-current-time@v2
       id: current-time
       with:
         format: YYYY-MM-DDTHH-mm-ss
         utcOffset: "+09:00"
-			
+
     - name: Generate deployment package
       run: |
         mkdir -p deploy
         cp build/libs/*.jar deploy/application.jar
         cd deploy && zip -r deploy.zip .
-        
+
     - name: Beanstalk Deploy
       uses: einaregilsson/beanstalk-deploy@v21
       with:
