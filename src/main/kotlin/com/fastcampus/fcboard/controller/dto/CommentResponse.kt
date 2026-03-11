@@ -10,8 +10,8 @@ data class CommentResponse(
 )
 
 fun CommentResponseDto.toResponse() = CommentResponse(
-    id=id,
-    content=content,
-    createdBy=createdBy,
-    createdAt=createdAt
+    id = id,
+    content = content,
+    createdBy = createdBy,
+    createdAt = createdAt
 )
