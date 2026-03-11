@@ -1,0 +1,26 @@
+### 게시글 생성
+POST /localhost:8080/posts
+Content-Type: application/json
+
+{
+    "title" : "title",
+    "content" : "content",
+    "createBy" : "createBy"
+}
+
+### 게시글 수정
+PUT /localhost:8080/posts/11
+Content-Type: application/json
+
+{
+    "title" : "title",
+    "content" : "content",
+    "udpateBy" : "updateBy"
+}
+
+### 게시글 삭제
+DELETE /localhost:8080/posts/1?createBy=hyeonjin
+
+### 게시글 조회
+GET /localhost:8080/posts/11
+
