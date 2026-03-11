@@ -5,11 +5,11 @@ import com.fastcampus.fcboard.service.PostCreateRequestDto
 data class PostCreateRequest(
     val title: String,
     val content: String,
-    val createBy: String,
+    val createdBy: String,
 )
 
 fun PostCreateRequest.toDto() = PostCreateRequestDto(
     title = title,
     content = content,
-    createBy = createBy
+    createdBy = createdBy
 )

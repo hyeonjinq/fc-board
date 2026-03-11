@@ -5,11 +5,11 @@ import com.fastcampus.fcboard.domain.Post
 data class PostCreateRequestDto(
     val title: String,
     val content: String,
-    val createBy: String,
+    val createdBy: String,
 )
 
 fun PostCreateRequestDto.toEntity() = Post(
     title = title,
     content = content,
-    createBy = createBy
+    createdBy = createdBy
 )

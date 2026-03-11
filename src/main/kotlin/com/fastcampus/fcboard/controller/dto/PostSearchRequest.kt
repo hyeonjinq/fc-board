@@ -6,5 +6,5 @@ data class PostSearchRequest(
     @RequestParam
     val title: String?,
     @RequestParam
-    val createBy: String?,
+    val createdBy: String?,
 )

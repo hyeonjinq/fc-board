@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "title" : "title",
     "content" : "content",
-    "createBy" : "createBy"
+    "createdBy" : "createdBy"
 }
 
 ### 게시글 수정
@@ -15,11 +15,11 @@ Content-Type: application/json
 {
     "title" : "title",
     "content" : "content",
-    "udpateBy" : "updateBy"
+    "udpateBy" : "updatedBy"
 }
 
 ### 게시글 삭제
-DELETE /localhost:8080/posts/1?createBy=hyeonjin
+DELETE /localhost:8080/posts/1?createdBy=hyeonjin
 
 ### 게시글 조회
 GET /localhost:8080/posts/11

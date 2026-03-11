@@ -5,11 +5,11 @@ import com.fastcampus.fcboard.service.PostUpdateRequestDto
 data class PostUpdateRequest(
     val title: String,
     val content: String,
-    val updateBy: String,
+    val updatedBy: String,
 )
 
 fun PostUpdateRequest.toDto() = PostUpdateRequestDto(
     title = title,
     content = content,
-    updateBy = updateBy
+    updatedBy = updatedBy
 )

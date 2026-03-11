@@ -42,10 +42,10 @@ class PostController(
     @DeleteMapping("/posts/{id}")
     fun deletePosts(
         @PathVariable id: Long,
-        @RequestParam createBy: String,
+        @RequestParam createdBy: String,
     ): Long {
-        println(createBy)
-        return postService.deletePost(id, createBy)
+        println(createdBy)
+        return postService.deletePost(id, createdBy)
     }
 
     @GetMapping("/posts/{id}")

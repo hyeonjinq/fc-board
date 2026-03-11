@@ -24,7 +24,7 @@ class PostServiceTest(
                 PostCreateRequestDto(
                     title = "제목",
                     content = "내용",
-                    createBy = "harris"
+                    createdBy = "harris"
                 )
             )
             then("게시글이 정상적으로 생성됨을 확인한다.") {
@@ -33,13 +33,13 @@ class PostServiceTest(
                 post shouldNotBe null
                 post?.title shouldBe "제목"
                 post?.content shouldBe "내용"
-                post?.createBy shouldBe "harris"
+                post?.createdBy shouldBe "harris"
             }
         }
     }
     given("게시글 수정시") {
         val saved = postRepository.save(
-            Post(title = "title", content = "content", createBy = "harris")
+            Post(title = "title", content = "content", createdBy = "harris")
         )
         When("정상 수정시") {
             val updatedId = postService.updatePost(
@@ -47,7 +47,7 @@ class PostServiceTest(
                 PostUpdateRequestDto(
                     title = "update title",
                     content = "update content",
-                    updateBy = "harris"
+                    updatedBy = "harris"
                 )
             )
             then("게시글이 정상적으로 수정됨을 확인한다.") {
@@ -66,7 +66,7 @@ class PostServiceTest(
                         PostUpdateRequestDto(
                             title = "update title",
                             content = "update content",
-                            updateBy = "update harris"
+                            updatedBy = "update harris"
                         )
                     )
                 }
@@ -80,7 +80,7 @@ class PostServiceTest(
                         PostUpdateRequestDto(
                             title = "update title",
                             content = "update content",
-                            updateBy = "update harris"
+                            updatedBy = "update harris"
                         )
                     )
                 }
@@ -88,7 +88,7 @@ class PostServiceTest(
         }
     }
     given("게시글 삭제시") {
-        val saved = postRepository.save(Post(title = "title", content = "content", createBy = "harris"))
+        val saved = postRepository.save(Post(title = "title", content = "content", createdBy = "harris"))
         When("정상 삭제시") {
             val postId = postService.deletePost(saved.id, "harris")
             then("게시글이 정상적으로 삭제됨을 확인한다.") {
@@ -97,7 +97,7 @@ class PostServiceTest(
             }
         }
         When("작성자가 동일하지 않으면") {
-            val saved2 = postRepository.save(Post(title = "title", content = "content", createBy = "harris"))
+            val saved2 = postRepository.save(Post(title = "title", content = "content", createdBy = "harris"))
             then("삭제할 수 없는 게시물 입니다 예외가 발생한다.") {
                 shouldThrow<PostNotDeletableException> { postService.deletePost(saved2.id, "harris2") }
             }
