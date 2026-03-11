@@ -1,16 +1,19 @@
 package com.fastcampus.fcboard.domain
 
+import com.fastcampus.fcboard.exception.PostNotUpdatableException
+import com.fastcampus.fcboard.service.PostUpdateRequestDto
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import java.time.LocalDateTime
 
 @Entity
 class Post(
-    createdBy: String,
+    createBy: String,
     title: String,
     content: String,
-) : BaseEntity(createdBy) {
+) : BaseEntity(createBy) {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +23,13 @@ class Post(
         protected set
     var content: String = content
         protected set
+
+    fun update(postUpdateRequestDto: PostUpdateRequestDto) {
+        if(postUpdateRequestDto.updateBy != this.createBy){
+            throw PostNotUpdatableException()
+        }
+        this.title = postUpdateRequestDto.title
+        this.content = postUpdateRequestDto.content
+        super.updatedBy(postUpdateRequestDto.updateBy)
+    }
 }

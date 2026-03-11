@@ -14,7 +14,7 @@ abstract class BaseEntity(
     var updateAt: LocalDateTime? = null
         protected set
 
-    fun update(updateBy: String) {
+    fun updatedBy(updateBy: String) {
         this.updateBy = updateBy
         this.updateAt = LocalDateTime.now()
     }
