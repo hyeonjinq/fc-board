@@ -1,6 +1,5 @@
 package com.fastcampus.fcboard.service
 
-import com.fastcampus.fcboard.controller.dto.PostUpdateRequest
 import com.fastcampus.fcboard.domain.Post
 import com.fastcampus.fcboard.exception.PostNotDeletableException
 import com.fastcampus.fcboard.exception.PostNotFoundException
@@ -16,18 +15,20 @@ import org.springframework.data.repository.findByIdOrNull
 
 @SpringBootTest
 class PostServiceTest(
-    private val postService : PostService,
-    private val postRepository : PostRepository
-) :BehaviorSpec({
-    given("게시글 생성 시"){
-        When("게시글 인풋이 정상적으로 들어오면"){
-            val postId = postService.createPost(PostCreateRequestDto(
-                title = "제목",
-                content = "내용",
-                createBy = "rion",
-            ))
-            then("게시글이 정상적으로 생성을 확인한다."){
-                postId shouldBeGreaterThan  0L
+    private val postService: PostService,
+    private val postRepository: PostRepository,
+) : BehaviorSpec({
+    given("게시글 생성 시") {
+        When("게시글 인풋이 정상적으로 들어오면") {
+            val postId = postService.createPost(
+                PostCreateRequestDto(
+                    title = "제목",
+                    content = "내용",
+                    createBy = "rion"
+                )
+            )
+            then("게시글이 정상적으로 생성을 확인한다.") {
+                postId shouldBeGreaterThan 0L
                 val post = postRepository.findByIdOrNull(postId)
                 post shouldNotBe null
                 post?.title shouldBe "제목"
@@ -38,13 +39,16 @@ class PostServiceTest(
     }
     given("게시글 수정 시") {
         val saved = postRepository.save(Post(title = "제목", content = "내용", createBy = "rion"))
-        When("정상 수정 시"){
-            val updateId = postService.updatePost(saved.id, PostUpdateRequestDto(
-                title = "update title",
-                content = "udpate content",
-                updateBy = "update rion",
-            ))
-            then("게시글이 정상적으로 수정됨을 확인한다."){
+        When("정상 수정 시") {
+            val updateId = postService.updatePost(
+                saved.id,
+                PostUpdateRequestDto(
+                    title = "update title",
+                    content = "udpate content",
+                    updateBy = "update rion"
+                )
+            )
+            then("게시글이 정상적으로 수정됨을 확인한다.") {
                 saved.id shouldBe updateId
                 val update = postRepository.findByIdOrNull(updateId)
                 update shouldNotBe null

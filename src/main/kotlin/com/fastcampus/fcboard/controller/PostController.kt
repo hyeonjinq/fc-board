@@ -20,9 +20,9 @@ import java.awt.print.Pageable
 import java.time.LocalDateTime
 
 @RestController
-class PostController (
-    private val postService: PostService
-){
+class PostController(
+    private val postService: PostService,
+) {
 
     @PostMapping("/posts")
     fun createPosts(

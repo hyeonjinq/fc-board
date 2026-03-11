@@ -6,7 +6,6 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
-import java.time.LocalDateTime
 
 @Entity
 class Post(
@@ -25,7 +24,7 @@ class Post(
         protected set
 
     fun update(postUpdateRequestDto: PostUpdateRequestDto) {
-        if(postUpdateRequestDto.updateBy != this.createBy){
+        if (postUpdateRequestDto.updateBy != this.createBy) {
             throw PostNotUpdatableException()
         }
         this.title = postUpdateRequestDto.title
