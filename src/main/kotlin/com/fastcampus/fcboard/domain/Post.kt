@@ -1,7 +1,7 @@
 package com.fastcampus.fcboard.domain
 
 import com.fastcampus.fcboard.exception.PostNotUpdatableException
-import com.fastcampus.fcboard.service.PostUpdateRequestDto
+import com.fastcampus.fcboard.service.dto.PostUpdateRequestDto
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType

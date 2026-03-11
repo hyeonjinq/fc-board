@@ -1,6 +1,6 @@
 package com.fastcampus.fcboard.controller.dto
 
-import com.fastcampus.fcboard.service.PostCreateRequestDto
+import com.fastcampus.fcboard.service.dto.PostCreateRequestDto
 
 data class PostCreateRequest(
     val title: String,

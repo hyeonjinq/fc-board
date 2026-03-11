@@ -1,4 +1,4 @@
-package com.fastcampus.fcboard.service
+package com.fastcampus.fcboard.service.dto
 
 import com.fastcampus.fcboard.domain.Post
 
