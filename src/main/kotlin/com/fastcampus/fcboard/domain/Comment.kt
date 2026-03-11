@@ -1,5 +1,7 @@
 package com.fastcampus.fcboard.domain
 
+import com.fastcampus.fcboard.exception.CommentNotUpdatableException
+import com.fastcampus.fcboard.service.dto.CommentUpdateRequestDto
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
 import jakarta.persistence.GeneratedValue
@@ -13,6 +15,14 @@ class Comment(
     post: Post,
     createdBy: String,
 ) : BaseEntity(createdBy = createdBy) {
+
+    fun update(commentUpdateRequestDto: CommentUpdateRequestDto) {
+        if (commentUpdateRequestDto.updatedBy != this.createdBy) {
+            throw CommentNotUpdatableException()
+        }
+        this.content = commentUpdateRequestDto.content
+        super.updatedBy(commentUpdateRequestDto.updatedBy)
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

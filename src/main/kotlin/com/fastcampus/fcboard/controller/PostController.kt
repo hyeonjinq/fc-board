@@ -44,7 +44,6 @@ class PostController(
         @PathVariable id: Long,
         @RequestParam createdBy: String,
     ): Long {
-        println(createdBy)
         return postService.deletePost(id, createdBy)
     }
 
