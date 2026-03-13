@@ -20,6 +20,6 @@ class Tag(
         protected set
 
     @ManyToOne(fetch = FetchType.LAZY)
-    var post: Post? = post
+    var post: Post = post
         protected set
 }
