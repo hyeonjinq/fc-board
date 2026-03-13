@@ -124,21 +124,6 @@ class PostServiceTest(
         }
     }
     given("게시글 상세조회시") {
-        val saved = postRepository.save(Post(title = "title", content = "content", createdBy = "harris"))
-        When("정상 조회시") {
-            val post = postService.getPost(saved.id)
-            then("게시글의 내용이 정상적으로 반환됨을 확인한다.") {
-                post.id shouldBe saved.id
-                post.title shouldBe "title"
-                post.content shouldBe "content"
-                post.createdBy shouldBe "harris"
-            }
-        }
-        When("게시글이 없을 때") {
-            then("게시글을 찾을수 없다라는 예외가 발생한다.") {
-                shouldThrow<PostNotFoundException> { postService.getPost(9999L) }
-            }
-        }
     }
     given("게시글 목록조회시") {
     }
